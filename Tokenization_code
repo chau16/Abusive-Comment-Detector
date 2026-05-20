@@ -1,0 +1,11 @@
+!pip install transformers torch scikit-learn
+from transformers import BertTokenizer
+import warnings
+warnings.filterwarnings('ignore')
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+sample_text = "You are an absolute idiot and i hate you."
+tokens = tokenizer.tokenize(sample_text)
+token_ids = tokenizer.convert_tokens_to_ids(tokens)
+print("Original Text:", sample_text)
+print("Tokens (The words chopped up):", tokens)
+print("Token IDs (The numbers BERT actually sees):",token_ids)
