@@ -1,0 +1,18 @@
+new_comment = "You are incredibly stupid and i can't stand you."
+new_inputs = tokenizer(new_comment,return_tensors="pt")
+model.eval()
+with torch.no_grad():
+  new_outputs= model(**new_inputs)
+  new_prediction = torch.argmax(new_outputs.logits,dim=1).item()
+
+print("--- TEST RESULT ---")
+if new_prediction == 1:
+  print(f"Comment:'{new_comment}'\nVerdict:ABUSIVE")
+else:
+  print(f"Comment:'{new_comment}'\nVerdict:CLEAN")
+
+
+print("\n--- SAVING MODEL ---")
+model.save_pretrained('./my_abusive_model')
+tokenizer.save_pretrained('./my_abusive_model')
+print("Model & Tokenizer successfully saved to the 'my_abusive_model' folder!")
