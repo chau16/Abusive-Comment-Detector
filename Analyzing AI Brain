@@ -1,0 +1,16 @@
+from pandas.plotting import lag_plot
+from torch.optim import AdamW
+labels = torch.tensor(df['label'].tolist())
+optimizer = AdamW(model.parameters(), lr=1e-5)
+model.train()
+print("Starting Training Loop...\n")
+for epoch in range(5):
+    optimizer.zero_grad()
+
+    outputs= model(**encoded_inputs,labels=labels)
+
+    loss=outputs.loss
+    loss.backward()
+    optimizer.step()
+    print(f"Epoch {epoch + 1} | Loss (Error amount): {loss.item():.4f}")
+print("\nTraining Complete!")
