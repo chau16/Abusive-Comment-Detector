@@ -1,0 +1,10 @@
+from huggingface_hub import Padding
+all_comments = df['comment'].tolist()
+encoded_inputs = tokenizer(
+    all_comments,
+    padding= True,
+    truncation = True,
+    return_tensors="pt"
+)
+print("Padded Input IDs (Notice the zeroes at the end of shorter sentences):")
+print(encoded_inputs['input_ids'])
