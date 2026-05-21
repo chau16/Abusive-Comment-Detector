@@ -1,0 +1,9 @@
+from transformers import BertForSequenceClassification
+import torch
+print("Downloadind the BERT brain. This might take a few second...")
+model = BertForSequenceClassification.from_pretrained('bert-base-uncased',num_labels=2)
+print("Model downloaded successfully!")
+with torch.no_grad():
+  outputs = model(**encoded_inputs)
+print("\nRaw AI output Scores:")
+print(outputs.logits)
