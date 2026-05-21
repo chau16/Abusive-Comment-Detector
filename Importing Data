@@ -1,0 +1,10 @@
+import pandas as pd
+data = {
+    'comment':["This is a really helpful guide, Thanks!",
+               "You are an absolute idiot and i hate you.",
+               "Can someone explain the second paragraph?",
+               "Shut up you pathetic loser."],
+    'label': [0,1,0,1]
+}
+df= pd.DataFrame(data)
+print(df)
